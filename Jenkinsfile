@@ -1,6 +1,10 @@
 #!groovy
 pipeline {
-	agent none
+    agent any
+    tools {
+        jdk 'jdk17'
+        maven 'maven3'
+    }
   stages {
   	stage('Maven Install') {
     	agent {
@@ -9,8 +13,7 @@ pipeline {
         }
       }
       steps {
-        withMaven(maven: 'mvn') {
-      	sh "${mvnHome}/bin/mvn clean install"
+      	sh "mvn clean install"
 		}
       }
     }
