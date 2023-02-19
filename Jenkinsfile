@@ -9,7 +9,7 @@ pipeline {
         }
       }
       steps {
-		def mvnHome = tool name: 'm39', type: 'maven'
+        def mvnHome = tool name: 'm39', type: 'maven'
       	sh "${mvnHome}/bin/mvn clean install"
       }
     }
