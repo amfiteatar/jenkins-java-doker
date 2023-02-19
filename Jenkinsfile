@@ -9,7 +9,10 @@ pipeline {
         }
       }
       steps {
-      	sh 'mvn clean install'
+### https://stackoverflow.com/questions/54984408/jenkins-mvn-not-found		  
+		def jdkHome=tool name: 'jdk17', type: 'jdk'
+		def mvnHome=tool name: 'm39', type: 'maven'
+      	sh "${mvnHome}/bin/mvn clean install"
       }
     }
   }
