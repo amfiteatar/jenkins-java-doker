@@ -5,12 +5,13 @@ pipeline {
   	stage('Maven Install') {
     	agent {
       	any {
-        	image 'maven:3.5.0'
+        	image 'maven:3.9.0'
         }
       }
       steps {
-        def mvnHome = tool name: 'm39', type: 'maven'
+        withMaven(maven: 'mvn') {
       	sh "${mvnHome}/bin/mvn clean install"
+		}
       }
     }
   }
