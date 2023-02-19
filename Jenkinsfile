@@ -6,16 +6,10 @@ pipeline {
         maven 'maven3'
     }
   stages {
-  	stage('Maven Install') {
-    	agent {
-      	any {
-        	image 'maven:3.9.0'
-        }
-      }
+  	stage('Maven Build') {
       steps {
       	sh "mvn clean install"
 		}
       }
     }
-  }
 }
