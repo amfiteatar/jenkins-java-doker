@@ -1,11 +1,12 @@
 #!groovy
 pipeline {
-    agent any
+	agent { dockerfile true }
     tools {
         jdk 'jdk17'
         maven 'maven3'
     }
   stages {
+
   	stage('Maven Build') {
       steps {
       	sh "mvn clean install"
