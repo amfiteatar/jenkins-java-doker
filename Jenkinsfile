@@ -16,7 +16,7 @@ pipeline {
 //	agent { dockerfile true }
   	stage('Docker Build') {
       steps {
-      	sh "docker build ."
+      	sh "/var/jenkins_home/downloads/docker build ."
 		}
       }	
   	stage('Docker Tag') {
