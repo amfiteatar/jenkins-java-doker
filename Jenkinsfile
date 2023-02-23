@@ -21,7 +21,7 @@ pipeline {
       }	
   	stage('Docker Tag') {
       steps {
-      	sh "docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
+      	sh "/var/jenkins_home/downloads/docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
 		}
       }
     }
