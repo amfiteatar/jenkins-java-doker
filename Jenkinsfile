@@ -14,17 +14,18 @@ pipeline {
 		}
       }
 //	agent { dockerfile true }
-  	stage('Docker Build') {
+  	stage('Docker Build and tag') {
       steps {
-      	sh "docker build ."
+      	sh "docker build -t  amfiteatar/amfiteatar ."
 //    	sh "/var/jenkins_home/downloads/docker build ."
+      	sh "docker images"
 		}
       }	
-  	stage('Docker Tag') {
-      steps {
-      	sh "docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
-//    	sh "/var/jenkins_home/downloads/docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
-		}
-      }
+//  	stage('Docker Tag') {
+//      steps {
+//      	sh "docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
+////    	sh "/var/jenkins_home/downloads/docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
+//		}
+//      }
     }
 }
