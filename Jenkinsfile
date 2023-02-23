@@ -4,7 +4,7 @@ pipeline {
     tools {
         jdk 'jdk17'
         maven 'maven3'
-		dockerTool 'docker3'
+//		dockerTool 'docker3'
     }
   stages {
 
@@ -16,12 +16,14 @@ pipeline {
 //	agent { dockerfile true }
   	stage('Docker Build') {
       steps {
-      	sh "/var/jenkins_home/downloads/docker build ."
+      	sh "docker build ."
+//    	sh "/var/jenkins_home/downloads/docker build ."
 		}
       }	
   	stage('Docker Tag') {
       steps {
       	sh "/var/jenkins_home/downloads/docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
+//    	sh "/var/jenkins_home/downloads/docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
 		}
       }
     }
