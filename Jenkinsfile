@@ -14,7 +14,7 @@ pipeline {
 		}
       }
 //	agent { dockerfile true }
-  	stage('Docker Build and tag') {
+  	stage('Docker build, tag and push') {
       steps {
       	sh "docker build -t  amfiteatar/amfiteatar ."
 //    	sh "/var/jenkins_home/downloads/docker build ."
@@ -23,13 +23,14 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
           sh 'docker push amfiteatar/amfiteatar:latest'	      
-	}
-      }	
+	  }
+        }// steps
+	}// stage Docker Build, tag and push
 //  	stage('Docker Tag') {
 //      steps {
 //      	sh "docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
 ////    	sh "/var/jenkins_home/downloads/docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
 //		}
 //      }
-    }
-}
+    }// stages
+}// pipline
