@@ -18,8 +18,12 @@ pipeline {
       steps {
       	sh "docker build -t  amfiteatar/amfiteatar ."
 //    	sh "/var/jenkins_home/downloads/docker build ."
+	sh "docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
       	sh "docker images"
-		}
+        withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh 'docker push amfiteatar/amfiteatar:latest'	      
+	}
       }	
 //  	stage('Docker Tag') {
 //      steps {
