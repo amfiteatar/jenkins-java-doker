@@ -2,6 +2,7 @@
 
 
 If you have spaces in folder path, here is command which work under windows 10 Power Shell:
+https://hub.docker.com/repository/docker/amfiteatar/custom-jenkins-docker/
 
 cd "path which have spaces"
 
