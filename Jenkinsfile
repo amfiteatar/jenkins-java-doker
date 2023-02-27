@@ -21,7 +21,8 @@ pipeline {
 	sh "docker tag amfiteatar/amfiteatar amfiteatar/amfiteatar:1.1"
       	sh "docker images"
         withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+//          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh "echo ${env.dockerHubPassword} | docker login -u ${env.dockerHubUser} --password-stdin"
           sh 'docker push amfiteatar/amfiteatar:latest'	      
 	  }
         }// steps
